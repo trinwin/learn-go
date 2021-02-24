@@ -12,7 +12,8 @@
 - Go Modules overview
 - Create a Go Module (go mod init, go test)
 - Adding a dependency to go mod (go test, go list -m all)
-- Upgrading dependencies
+- Upgrading dependencies (go list -m -versions)
+- To get a specific version, use “@” in your go get (ex: go get github.com/gorilla/mux@v1.7.3)
 - go mod tidy command cleans up these unused dependencies
 
 ### [Go modules](https://blog.golang.org/using-go-modules)
