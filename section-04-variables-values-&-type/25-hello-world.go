@@ -21,9 +21,9 @@ func foo() {
 	fmt.Println("I'm in foo")
 }
 
-func bar()  {
+func bar() {
 	fmt.Println("and then we exited")
-	
+
 }
 
 // Control flow:
