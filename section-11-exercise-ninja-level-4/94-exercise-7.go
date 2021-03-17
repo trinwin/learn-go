@@ -1,16 +1,22 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+)
 
 func main() {
-	for by := 1997; by <= 2021; by++ {
-		if by == 2021 {
-			fmt.Println("Current year", by)
-		} else if by == 2020{
-			fmt.Println("Last year", by)
-		} else {
-			fmt.Println(by)
+	r1 := []string{"James", "Bond", "Shaken, not stirred"}
+	r2 := []string{"Miss", "Moneypenny", "Helloooooo, James."}
+	fmt.Println(r1)
+	fmt.Println(r2)
+
+	table := [][]string{r1, r2}
+	fmt.Println(table)
+
+	for i, row := range table {
+		fmt.Println("record: ", i)
+		for j, val := range row {
+			fmt.Printf("\t index position: %v \t value: \t %v \n", j, val)
 		}
 	}
 }
-

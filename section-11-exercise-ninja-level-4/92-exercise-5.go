@@ -3,7 +3,8 @@ package main
 import "fmt"
 
 func main() {
-	for i := 10; i <= 100; i++ {
-		fmt.Printf("%v %% 4 = %v\n", i, i%4)
-	}
+	a := []int{42, 43, 44, 45, 46, 47, 48, 49, 50, 51}
+	
+	a = append(a[:3], a[6:]...)
+	fmt.Println(a)
 }

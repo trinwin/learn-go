@@ -3,7 +3,10 @@ package main
 import "fmt"
 
 func main() {
-	for i := 1; i <= 10000; i++ {
-		fmt.Println(i)
+	a := [5]int{1,2,3,4,5}
+
+	for i, v := range a {
+		fmt.Println(i, v)
 	}
+	fmt.Printf("Type of a is %T", a)
 }
