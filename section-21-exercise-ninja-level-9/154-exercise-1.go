@@ -1,19 +1,38 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"runtime"
+	"sync"
+)
+
+var wg sync.WaitGroup
 
 func main() {
-	x := foo()
-	y, z := bar()
+	fmt.Println("OS\t", runtime.GOOS)
+	fmt.Println("ARCH\t", runtime.GOARCH)
+	fmt.Println("CPUs\t", runtime.NumCPU())
+	fmt.Println("Goroutines\t", runtime.NumGoroutine())
 
-	fmt.Println(x,y,z)
+	wg.Add(1)
+	go foo()
+	go bar()
+
+	fmt.Println("CPUs\t", runtime.NumCPU())
+	fmt.Println("Goroutines\t", runtime.NumGoroutine())
+	wg.Wait()
 }
 
-func foo() int  {
-	return 1
+func foo() {
+	for i := 0; i < 3; i++ {
+		fmt.Println("foo:", i)
+	}
+	wg.Done()
 }
 
-// 2 or more return values then use (a, b) format
-func bar() (int, string) {
-	return 1, "hello"
+func bar() {
+	for i := 0; i < 3; i++ {
+		fmt.Println("bar:", i)
+	}
+	wg.Done()
 }

@@ -2,27 +2,34 @@ package main
 
 import "fmt"
 
+type person struct {
+	first string
+	last string
+}
+
+func (p* person) speak()  {
+	fmt.Println("Name:", p.first, p.last)
+}
+
+type human interface {
+	speak()
+}
+
+func saySomething(h human)  {
+	h.speak()
+}
+
 func main() {
-	a := []int{1,2,3,4,5}
-	sum := foo(a...)
-	fmt.Println(sum)
-	
-	sum2 := bar(a)
-	fmt.Println(sum2)
+	p1 := person {
+		first: "Trinh",
+		last: "Nguyen",
+	}
+	p2 := person {
+		first: "Cuong",
+		last: "Nguyen",
+	}
+
+	saySomething(&p1)
+	// saySomething(p2)
 }
 
-func foo(a ...int) int {
-	sum := 0	
-	for _, v := range a {
-		sum += v
-	}
-	return sum
-}
-
-func bar(b []int) int {
-	sum := 0	
-	for _, v := range b {
-		sum += v
-	}
-	return sum
-}

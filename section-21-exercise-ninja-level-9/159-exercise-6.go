@@ -1,9 +1,11 @@
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"runtime"
+)
 
 func main() {
-	func(){
-		fmt.Println("Anonymous Function")
-	}()
+	fmt.Println("OS\t", runtime.GOOS)
+	fmt.Println("ARCH\t", runtime.GOARCH)
 }

@@ -1,23 +1,36 @@
 package main
 
-import "fmt"
-
-type person struct {
-	first string
-	last string
-	age int
-}
-
-func (p person) speak()  {
-	fmt.Println("I am", p.first, p.last, ". I'm", p.age)
-}
+import (
+	"fmt"
+	"runtime"
+	"sync"
+)
 
 func main() {
-	p := person{
-		"Trinh",
-		"Nguyen",
-		23,
+	incre := 0
+
+	const gr = 10
+
+	var wg sync.WaitGroup
+	wg.Add(gr)
+
+	// Create a mutex
+	var mu sync.Mutex
+
+	for i := 0; i < gr; i++ {
+		go func ()  {
+			mu.Lock()
+			temp := incre
+			temp++
+			incre = temp
+			mu.Unlock()
+			wg.Done()
+			
+		}()
+		fmt.Println("Goroutines:", runtime.NumGoroutine())
 	}
 
-	p.speak()
+	wg.Wait()
+	fmt.Println("Increment:", incre)
 }
+

@@ -2,46 +2,32 @@ package main
 
 import (
 	"fmt"
-	"math"
+	"runtime"
+	"sync"
+	"sync/atomic"
 )
 
-type square struct {
-	length float64
-}
-func (s square) area() float64 {
-	return s.length * s.length
-}
-
-type circle struct {
-	radius float64
-}
-func (c circle) area() float64 {
-	return math.Pi * c.radius * 2
-}
-
-// make sure to add full method definition
-type shape interface {
-	area() float64
-}
-
-func info(s shape) {
-	switch s.(type){
-		case square:
-			fmt.Println("area of a square:", s.(square).area())
-		case circle:
-			fmt.Println("area of a circle:", s.(circle).area())
-	}
-}
-
 func main() {
-	s := square {
-				length: 4,
+	var incre int64
+
+	const gr = 10
+
+	var wg sync.WaitGroup
+	wg.Add(gr)
+
+
+	for i := 0; i < gr; i++ {
+		go func ()  {
+			atomic.AddInt64(&incre, 1)
+			runtime.Gosched()
+			fmt.Println("Increment\t", atomic.LoadInt64(&incre))
+			wg.Done()
+			
+		}()
+		fmt.Println("Goroutines:", runtime.NumGoroutine())
 	}
 
-	c := circle {
-				radius: 4,
-	}
-
-	info(s)
-	info(c)
+	wg.Wait()
+	fmt.Println("Increment:", incre)
 }
+
