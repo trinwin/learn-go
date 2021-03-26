@@ -2,30 +2,29 @@ package main
 
 import (
 	"fmt"
-	"runtime"
-	"sync"
 )
 
 func main() {
-	incre := 0
+	c := gen()
+	receive(c)
 
-	const gr = 10
-
-	var wg sync.WaitGroup
-	wg.Add(gr)
-
-	for i := 0; i < gr; i++ {
-		go func ()  {
-			temp := incre
-			runtime.Gosched()
-			temp++
-			incre = temp
-			wg.Done()
-		}()
-		fmt.Println("Goroutines:", runtime.NumGoroutine())
-	}
-
-	wg.Wait()
-	fmt.Println("Increment:", incre)
+	fmt.Println("about to exit")
 }
 
+func gen() <-chan int {
+	c := make(chan int)
+
+	go func ()  {
+		for i := 0; i < 100; i++ {
+			c <- i
+		}
+		close(c)	
+	}()
+	return c
+}
+
+func receive(c <-chan int)  {
+	for i := range c {
+		fmt.Println(i)
+	}
+}
