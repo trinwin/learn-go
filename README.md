@@ -1,4 +1,4 @@
-# go-learn
+# learn-go
 
 ## Re-learn and master Golang through 2 Udemy Course
 
