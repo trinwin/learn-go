@@ -2,9 +2,9 @@
 
 ## Re-learn and master Golang through 2 Udemy Course
 
-1. [Learn How To Code: Google's Go (golang) Programming Language](https://www.udemy.com/course/learn-how-to-code/)
+1. [Learn How To Code: Google's Go (golang) Programming Language](https://www.udemy.com/course/learn-how-to-code/) by [Todd McLeod](https://github.com/GoesToEleven)
 
-2. [Web Development w/ Google’s Go (golang) Programming Language](https://www.udemy.com/course/go-programming-language/)
+2. [Web Development w/ Google’s Go (golang) Programming Language](https://www.udemy.com/course/go-programming-language/) by [Todd McLeod](https://github.com/GoesToEleven)
 
 ### In these 2 courses I learn:
 
