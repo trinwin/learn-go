@@ -1,6 +1,6 @@
 # learn-go
 
-## Re-learn and master Golang through 2 Udemy Course
+## Re-learn and master Golang through 2 Udemy Course 
 
 1. [Learn How To Code: Google's Go (golang) Programming Language](https://www.udemy.com/course/learn-how-to-code/) by [Todd McLeod](https://github.com/GoesToEleven)
 
